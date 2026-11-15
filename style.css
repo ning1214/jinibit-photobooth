@@ -197,3 +197,22 @@ h2 {
     gap: 0;
   }
 }
+
+/* 手機儲存照片預覽 */
+#savePreview {
+  display: block;
+  width: min(90vw, 430px);
+  height: auto;
+  margin: 20px auto;
+  border-radius: 8px;
+  -webkit-touch-callout: default;
+  -webkit-user-select: auto;
+  user-select: auto;
+}
+
+#saveHint {
+  color: #a56f66;
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 0 15px;
+}
