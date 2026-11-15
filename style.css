@@ -1,0 +1,199 @@
+
+/* 基本設定 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #eef9ff;
+  color: #a56f66;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* 首頁 */
+#home {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.home-container {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.home-background {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* 圖片按鈕 */
+.image-button {
+  appearance: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-button img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.image-button:active {
+  transform: scale(0.95);
+}
+
+
+/* 首頁 START */
+.start-button {
+  position: absolute;
+  top: 82%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  max-width: 200px;
+}
+
+.start-button:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+
+/* 拍攝與完成頁面 */
+#studio,
+#result {
+  padding: 25px 12px 40px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 12px 0;
+  color: #a16f6d;
+}
+
+
+/* 相機畫面 */
+.camera-box {
+  position: relative;
+  width: min(90vw, 430px);
+  aspect-ratio: 498 / 539;
+  margin: 20px auto;
+  overflow: hidden;
+  background: #ead9d2;
+  border: 5px solid #ffd2b3;
+  border-radius: 12px;
+}
+
+#camera,
+#uploadedPreview,
+#overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#camera,
+#uploadedPreview {
+  object-fit: cover;
+}
+
+/* 前置相機鏡像預覽 */
+#camera {
+  transform: scaleX(-1);
+}
+
+
+#overlay {
+  pointer-events: none;
+}
+
+
+/* 拍照操作按鈕 */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  max-width: 430px;
+  margin: 15px auto;
+}
+
+.controls .image-button {
+  width: 46%;
+  max-width: 200px;
+}
+
+.upload-label {
+  cursor: pointer;
+}
+
+
+/* 普通文字按鈕 */
+.text-button {
+  background: #ffd2b3;
+  color: #855b55;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 22px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.text-button:active {
+  transform: scale(0.96);
+}
+
+
+/* 狀態提示 */
+#status {
+  min-height: 25px;
+  font-size: 14px;
+  margin: 12px auto;
+}
+
+
+/* 最後生成的照片 */
+#resultCanvas {
+  display: block;
+  width: min(90vw, 430px);
+  height: auto;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+
+/* 小螢幕調整 */
+@media (max-width: 380px) {
+  h2 {
+    font-size: 20px;
+  }
+
+  .controls {
+    gap: 0;
+  }
+}

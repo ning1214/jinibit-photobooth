@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>SKZOO Photo Booth</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- 首頁 -->
+  <section id="home">
+
+    <div class="home-container">
+
+      <img
+        src="assets/background.png"
+        class="home-background"
+        alt="手繪拍貼機">
+
+      <button id="startBtn" class="image-button start-button">
+        <img src="assets/start.png" alt="START">
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- 拍攝頁面 -->
+  <section id="studio" class="hidden">
+
+    <h2 id="photoTitle">PHOTO 1 / 4</h2>
+
+    <div class="camera-box">
+
+      <video id="camera"
+             autoplay playsinline muted></video>
+
+      <img id="uploadedPreview"
+           class="hidden"
+           alt="照片預覽">
+
+      <canvas id="overlay"></canvas>
+
+    </div>
+
+    <div class="controls">
+
+      
+
+      <!-- 拍照 -->
+      <button id="captureBtn"
+              class="image-button hidden">
+        <img src="assets/camera-button.png"
+             alt="拍照">
+      </button>
+
+      <!-- 上傳 -->
+      <label class="image-button upload-label">
+        <img src="assets/upload-button.png"
+             alt="上傳">
+        <input type="file"
+               id="uploadInput"
+               accept="image/*"
+               hidden>
+      </label>
+
+      <!-- 重拍 -->
+      <button id="retakeBtn" class="image-button">
+        <img src="assets/retake-button.png"
+             alt="重拍">
+      </button>
+
+    </div>
+
+    <p id="status"></p>
+
+  </section>
+
+
+  <!-- 完成頁面 -->
+  <section id="result" class="hidden">
+
+    <h2>YOUR PHOTO ♡</h2>
+
+    <canvas id="resultCanvas"></canvas>
+
+    <div class="controls">
+
+      <button id="saveBtn" class="image-button">
+        <img src="assets/save-button.png"
+             alt="存檔">
+      </button>
+
+      
+      <button id="restartBtn" class="image-button">
+        <img src="assets/again.png" alt="重新開始">
+      </button>
+
+
+    </div>
+
+  </section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
