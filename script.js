@@ -2,6 +2,8 @@
 const home = document.getElementById("home");
 const studio = document.getElementById("studio");
 const result = document.getElementById("result");
+const savePreview = document.getElementById("savePreview");
+const saveHint = document.getElementById("saveHint");
 
 const startBtn = document.getElementById("startBtn");
 const captureBtn = document.getElementById("captureBtn");
@@ -376,15 +378,35 @@ function stopCamera() {
 // 下載 PNG
 
  // 下載 PNG
-saveBtn.onclick = function () {
+
+saveBtn.onclick = async function () {
 
   try {
-    const imageData =
-      resultCanvas.toDataURL("image/png");
 
+    // 將合成照片轉成 PNG
+    const blob = await new Promise((resolve, reject) => {
+      resultCanvas.toBlob(
+        result => result
+          ? resolve(result)
+          : reject(new Error("PNG 產生失敗")),
+        "image/png"
+      );
+    });
+
+    // 建立真正的圖片網址
+    const imageURL = URL.createObjectURL(blob);
+
+    // 顯示可以長按儲存的圖片
+    savePreview.src = imageURL;
+    savePreview.classList.remove("hidden");
+    saveHint.classList.remove("hidden");
+
+    // 隱藏原本的 canvas，避免出現兩張照片
+    resultCanvas.classList.add("hidden");
+
+    // 電腦仍然可以直接下載
     const link = document.createElement("a");
-
-    link.href = imageData;
+    link.href = imageURL;
     link.download = "SKZOO-RUN-IT.png";
 
     document.body.appendChild(link);
@@ -392,11 +414,14 @@ saveBtn.onclick = function () {
     document.body.removeChild(link);
 
   } catch (error) {
-    console.error("下載失敗：", error);
-    alert("無法儲存照片，請再試一次。");
+
+    console.error("儲存失敗：", error);
+    alert("照片產生失敗，請再試一次。");
+
   }
 
 };
+
 
 // 重新開始
 restartBtn.onclick = function () {
