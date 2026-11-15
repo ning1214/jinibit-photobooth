@@ -233,11 +233,16 @@ captureBtn.onclick = async function () {
         throw new Error("此瀏覽器不支援相機");
       }
 
-      cameraStream =
-        await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "user" },
-          audio: false
-        });
+      
+    cameraStream =
+      await navigator.mediaDevices.getUserMedia({
+        video: {
+          facingMode: "user",
+          width: { ideal: 1280 },
+          height: { ideal: 720 }
+        },
+        audio: false
+      });
 
       video.srcObject = cameraStream;
       await video.play();
