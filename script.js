@@ -338,9 +338,19 @@ retakeBtn.onclick = function () {
 // 合成最後的四格拍貼
 async function generateResult() {
   await assetsReady;
+  
+  // 每次產生新照片時，清除上一次的儲存預覽
+  savePreview.classList.add("hidden");
+  savePreview.removeAttribute("src");
+  saveHint.classList.add("hidden");
+
+  // 重新顯示真正的合成畫布
+  resultCanvas.classList.remove("hidden");
+
 
   resultCanvas.width = frame.naturalWidth;
   resultCanvas.height = frame.naturalHeight;
+  
 
   resultCtx.clearRect(
     0, 0,
